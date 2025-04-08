@@ -1,0 +1,15 @@
+body {
+    background-color: #ffebf3; /* ふんわりピンクの背景 */
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    color: #ff66b2; /* かわいいピンク */
+}
+
+.duck-img {
+    max-width: 300px;
+    border-radius: 50%;
+    border: 5px solid #ff66b2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,35 @@
+version: "3"
+services:
+  app:
+    build: ./docker/app
+    volumes:
+      - ../:/workspace:cached
+    ports:
+      - 80:80
+    tty: true
+    environment:
+        APP_ENV: local
+        PHP_EXTENSION_XDEBUG: 1
+        PHP_EXTENSION_MYSQL: 1
+        PHP_EXTENSION_PDO_MYSQL: 1
+        APACHE_DOCUMENT_ROOT: /workspace/public
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    ports:
+        - 3306:3306
+    environment:
+        MYSQL_DATABASE: laravel
+        MYSQL_USER: laravel
+        MYSQL_PASSWORD: laravel
+        MYSQL_ROOT_PASSWORD: root
+    command: --default-authentication-plugin=mysql_native_password
+  redis:
+    image: redis:6-alpine
+    ports:
+      - 6379:6379
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
