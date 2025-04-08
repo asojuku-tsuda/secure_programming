@@ -1,0 +1,57 @@
+.cyberpunk-bg {
+  background-color: #000000;
+  background-image: url('backwall.png');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border: 5px solid #b3ebff;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #b3ebff;
+  text-shadow: 1px 1px 2px rgba(139, 255, 217, 0.5);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #b57ef7;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #b3ebff;
+  color: #000000;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+button[type="submit"]:hover {
+  background-color: #14c1ff;
+}
+
+h2{
+  color:#b3ebff;
+}
