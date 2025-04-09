@@ -35,12 +35,8 @@ try {
   //検索結果を一旦配列に
   $getArr = $ps->fetchAll();
 
-  $pageurl = $_POST['pageurl'];
-
-  foreach($getArr as $row){
-    header('Location: ' . $pageurl);
-    exit;
-  }
+  // TODO：ここでページ番号を受け取って
+  // TODO：menu1.php menu2.php menu3.php へリダイレクトさせる処理を記述
  
   if(count($getArr) == 0){
     echo "<h2>ログイン失敗です</h2>";
