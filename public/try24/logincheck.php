@@ -5,8 +5,8 @@
                                      PDO::MYSQL_ATTR_MULTI_STATEMENTS => false,
                                      PDO::ATTR_EMULATE_PREPARES => false);
     
-        $db = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8",
-                                    "testuser", "Abcc&2291", $opt);
+        $db = new PDO("mysql:host=db;dbname=laravel;charset=utf8",
+                                    "laravel", "laravel", $opt);
     
 
         //POSTのパラメータを取り出す

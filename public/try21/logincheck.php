@@ -38,8 +38,8 @@ try{
 				PDO::MYSQL_ATTR_MULTI_STATEMENTS => false,
 				PDO::ATTR_EMULATE_PREPARES => false);
 
-	$db = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8",
-	   			  "testuser", "Abcc&2291", $opt);
+	$db = new PDO("mysql:host=db;dbname=laravel;charset=utf8",
+	   			  "laravel", "laravel", $opt);
 	$sql = "SELECT * FROM user WHERE email = ?";
 	$ps = $db->prepare($sql);
 	$ps->bindValue(1, $email, PDO::PARAM_STR);

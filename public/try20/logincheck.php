@@ -67,8 +67,8 @@ function incrementErrorCount($row){
 								 PDO::MYSQL_ATTR_MULTI_STATEMENTS => false,
 								 PDO::ATTR_EMULATE_PREPARES => false);
 
-		$db = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8",
-								 "testuser", "Abcc&2291", $opt);
+		$db = new PDO("mysql:host=db;dbname=laravel;charset=utf8",
+								 "laravel", "laravel", $opt);
 		$sql = "UPDATE User SET errorcount=?,errortime=? WHERE id=?";
 		$ps = $db->prepare($sql);
 		$ps->bindValue(1, $row['errorcount'] + 1, PDO::PARAM_INT);
@@ -88,8 +88,8 @@ function errorReset($row){
 								 PDO::MYSQL_ATTR_MULTI_STATEMENTS => false,
 								 PDO::ATTR_EMULATE_PREPARES => false);
 
-		$db = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8",
-								 "testuser", "Abcc&2291", $opt);
+		$db = new PDO("mysql:host=db;dbname=laravel;charset=utf8",
+								 "laravel", "laravel", $opt);
 		$sql = "UPDATE User SET errorcount=0 WHERE id=?";
 		$ps = $db->prepare($sql);
 		$ps->bindValue(1, $row['id'], PDO::PARAM_STR);
@@ -111,8 +111,8 @@ try{
 	$opt = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 							 PDO::MYSQL_ATTR_MULTI_STATEMENTS => false,
 							 PDO::ATTR_EMULATE_PREPARES => false);
-	$db = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8",
-							 "testuser", "Abcc&2291", $opt);
+	$db = new PDO("mysql:host=db;dbname=laravel;charset=utf8",
+							 "laravel", "laravel", $opt);
 	//SQL文作成 emailを条件にUserテーブルを検索
  	$sql = "SELECT * FROM User WHERE email = ?";
  	$ps = $db->prepare($sql);

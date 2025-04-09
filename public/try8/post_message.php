@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['nickname'])) {
 
     // データベースに接続し、bbsテーブルにデータを挿入する
     // user_idとnicknameはセッションから取得する
-    $db = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8", "testuser", "Abcc&2291");
+    $db = new PDO("mysql:host=db;dbname=laravel;charset=utf8", "laravel", "laravel");
     $sql = "INSERT INTO bbs (user_id, nickname, message) VALUES (?, ?, ?)";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(1, $_SESSION['user_id']);

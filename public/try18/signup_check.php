@@ -23,9 +23,9 @@
       if (mb_ereg_match('(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._&])[a-zA-Z\d._&]+', $password)) {
 
         // データベースへの接続情報
-        $dsn = 'mysql:host=localhost;dbname=secpgdb;charset=utf8';
-        $db_user = 'testuser';
-        $db_password = 'Abcc&2291';
+        $dsn = 'mysql:host=db;dbname=laravel;charset=utf8';
+        $db_user = 'laravel';
+        $db_password = 'laravel';
         try {
           // データベースへの接続
           $db = new PDO($dsn, $db_user, $db_password);

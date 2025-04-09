@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['nickname'])) {
    
     // データベースに接続し、bbsテーブルにデータを挿入する
     // user_idとnicknameはセッションから取得する
-    $pdo = new PDO("mysql:host=localhost;dbname=secpgdb;charset=utf8", "testuser", "Abcc&2291");
+    $pdo = new PDO("mysql:host=db;dbname=laravel;charset=utf8", "laravel", "laravel");
     
     // メッセージを取得するSQLを実行
     $sql = "SELECT nickname, message FROM bbs";
