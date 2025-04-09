@@ -10,12 +10,12 @@
       <h2>検索結果<br>[ID][タイトル][著者名]</h2>
 <?php
 // データベース接続情報
-$user = 'testuser';
-$password = 'Abcc&2291';
+$user = 'laravel';
+$password = 'laravel';
 
 try {
   // データベースに接続
-  $dsn = "mysql:host=localhost;dbname=secpgdb;charset=utf8";
+  $dsn = "mysql:host=db;dbname=laravel;charset=utf8";
   $pdo = new PDO($dsn, $user, $password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
