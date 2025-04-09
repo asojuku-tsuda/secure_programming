@@ -5,14 +5,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Menu1</title>
+    <title>ログイン成功</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body class="cyberpunk-bg">
     <div class="login-box">
-
-      <p>メニュー１画面</p>
-
+      <p>ログインに成功しました！</p>
+      <p>アカウント設定｜購入履歴｜閲覧履歴</p>
     </div>
   </body>
 </html>

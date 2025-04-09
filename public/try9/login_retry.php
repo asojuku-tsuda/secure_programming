@@ -1,6 +1,3 @@
-<?php
-  session_start();
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,49 +7,14 @@
   </head>
   <body class="cyberpunk-bg">
     <div class="login-box">
-	<?php
-// データベース接続情報a
-$user = 'laravel';
-$password = 'laravel';
-
-try {
-  // データベースに接続
-  $dsn = "mysql:host=db;dbname=laravel;charset=utf8";
-  $pdo = new PDO($dsn, $user, $password);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  
-  // 検索条件に基づいてSQLを作成
-  $useremail = $_POST['email'];
-  $userpwd = $_POST['password'];
-  $sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-  $ps = $pdo->prepare($sql);
-  $ps->bindValue(1, $useremail, PDO::PARAM_STR);
-  $ps->bindValue(2, $userpwd, PDO::PARAM_STR);
-
-  // SQLを実行し、結果を表示
-  $ps->execute();
-
-  //検索結果を一旦配列に
-  $getArr = $ps->fetchAll();
-
-  foreach($getArr as $row){
-    echo "<h2>ログイン成功です</h2>";
-    echo "<a href='input_message.php'>掲示板はここから</a>";
-    $_SESSION['user_id'] = $row['id'];
-    $_SESSION['nickname'] = $_POST['nickname'];
-    $_SESSION['email'] = $row['email'];
-    break;
-  }
- 
-  if(count($getArr) == 0){
-    echo "<h2>ログイン失敗ですa</h2>";
-  }
-  
-} catch (PDOException $e) {
-  echo 'データベースにアクセスできませんでした。'.$e->getMessage();
-  exit;
-}
-	?>
+        IDまたはパスワードが違います。再度入力してください。
+      <form action="login_huck.php" method="POST">
+        <label for="email">E-Mail:</label>
+        <input type="text" id="email" name="email" placeholder="Enter your e-mail...">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password...">
+        <button type="submit">Login</button>
+      </form>
     </div>
   </body>
 </html>

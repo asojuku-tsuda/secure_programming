@@ -12,7 +12,7 @@
         <input type="text" id="email" name="email" placeholder="Enter your e-mail...">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="Enter your password...">
-        <input type="hidden" id="url" name="url" placeholder="Enter your password...">
+        <input type="hidden" id="url" name="url" value="<?php echo $_GET['url']; ?>">
         <button type="submit">Login</button>
       </form>
     </div>

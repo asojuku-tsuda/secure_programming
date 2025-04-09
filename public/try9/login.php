@@ -35,10 +35,24 @@ try {
   //検索結果を一旦配列に
   $getArr = $ps->fetchAll();
 
-  // TODO：ここでページ番号を受け取って
-  // TODO：menu1.php menu2.php menu3.php へリダイレクトさせる処理を記述
- 
-  if(count($getArr) == 0){
+  if(count($getArr) > 0) {
+    // ログイン成功
+    // セッションにユーザー情報を保存
+    $_SESSION['user_id'] = $getArr[0]['id'];
+    $_SESSION['email'] = $getArr[0]['email'];
+    
+    // GETパラメータ「url」の値を取得
+    if(isset($_POST['url']) && !empty($_POST['url'])) {
+      $redirect_url = $_POST['url'];
+      // リダイレクト実行
+      header("Location: " . $redirect_url);
+      exit;
+    } else {
+      // urlパラメータがない場合はデフォルトページへリダイレクト
+      header("Location: success.php");
+      exit;
+    }
+  } else {
     echo "<h2>ログイン失敗です</h2>";
   }
   
