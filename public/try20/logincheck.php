@@ -132,7 +132,8 @@ try{
 		if(isLockAccount($row) == true){
 			echo "<h3>アカウントがロックされています。しばらく時間を置いてログインしてください</h3>";
 		}else if(password_verify($pass, $row['password'])){
-			//パスワードが一致した場合
+			//ログイン成功時の処理
+			
 
 			//セッションを再発行
 			session_regenerate_id(true);
