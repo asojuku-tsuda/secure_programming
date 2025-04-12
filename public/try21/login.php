@@ -21,7 +21,6 @@ unset($_SESSION['post']);
 <form method="post" action="logincheck.php">
 メールアドレス：<input name="mail" type="text" /><br>
 パスワード:<input type="password" name="pass" id="password"><br>
-<input type="checkbox" id="password-check" />パスワードを表示する<br>
 <input type="submit" value="ログイン">
 </form>
 </body>
