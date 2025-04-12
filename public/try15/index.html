@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵便番号検索</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .search-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 150px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        .error {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>郵便番号検索</h1>
+        
+        <div class="search-form">
+            <p>7桁の郵便番号を入力してください（例: 8100001）</p>
+            <input type="text" id="postnum" maxlength="7" placeholder="郵便番号">
+            <button onclick="searchPostal()">検索</button>
+        </div>
+        
+        <div id="result" class="result">
+            <h2>検索結果</h2>
+            <p id="address"></p>
+        </div>
+    </div>
+
+    <script>
+        function searchPostal() {
+            const postnum = document.getElementById('postnum').value;
+            const resultDiv = document.getElementById('result');
+            const addressElem = document.getElementById('address');
+            
+            // 入力チェック
+            if (!postnum.match(/^[0-9]{7}$/)) {
+                alert('7桁の数字を入力してください');
+                return;
+            }
+            
+            // APIにリクエスト
+            fetch(`webapi.php?postnum=${postnum}`)
+            // APIにリクエスト
+            fetch(`webapi.php?postnum=${postnum}`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                    resultDiv.style.display = 'block';
+                    
+                    if (data.result === 0) {
+                        addressElem.innerHTML = `<strong>${postnum}</strong>: ${data.chimei}`;
+                        addressElem.className = '';
+                    } else {
+                        addressElem.innerHTML = `郵便番号 <strong>${postnum}</strong> は見つかりませんでした。`;
+                        addressElem.className = 'error';
+                    }
+                })
+                .catch(error => {
+                    resultDiv.style.display = 'block';
+                    addressElem.innerHTML = 'エラーが発生しました。もう一度お試しください。';
+                    addressElem.className = 'error';
+                    console.error('Error:', error);
+                });
+        }
+        
+        // Enterキーでも検索できるように
+        document.getElementById('postnum').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchPostal();
+            }
+        });
+    </script>
+</body>
+</html>
