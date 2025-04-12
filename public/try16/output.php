@@ -8,8 +8,8 @@
 <script>
   window.addEventListener("load", loadparam, false);
   function loadparam(){
-    var params = new URLSearchParams(window.location.search);
-    var title = document.getElementById("titlep");
+    const params = new URLSearchParams(window.location.search);
+    const title = document.getElementById("titlep");
     title.innerHTML = params.get('inputtext');
   }
 </script>
@@ -21,8 +21,8 @@
 	<td style="border: 3px solid #b3ebff;text-align:center">データ</td>
 </tr>
 <script>
-var params = new URLSearchParams(window.location.search);
-for(var i = 1; i <= 5; i++){
+const params = new URLSearchParams(window.location.search);
+for(let i = 1; i <= 5; i++){
 	if(params.get('data' + i)){
 		document.write("<tr><td style=\"border: 3px solid #b3ebff;padding:5px\">" 
                      + params.get('data' + i) + "</td></tr>");
